@@ -1,0 +1,181 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- light mode setting --- */
+:root {
+    --bg-color: #f4f7f6;
+    --card-bg: #ffffff;
+    --text-main: #333333;
+    --text-muted: #666666;
+    --primary-color: #0056b3;
+    --border-color: #dddddd;
+    --shadow: 0 8px 16px rgba(0,0,0,0.1);
+    --transition-speed: 0.4s;
+}
+
+/* --- dark mode setting--- */
+.theme-toggle-checkbox:checked ~ .page-wrapper {
+    --bg-color: #121212;
+    --card-bg: #1e1e1e;
+    --text-main: #f0f0f0;
+    --text-muted: #aaaaaa;
+    --primary-color: #66b2ff;
+    --border-color: #333333;
+    --shadow: 0 8px 16px rgba(0,0,0,0.6);
+}
+
+
+.theme-toggle-checkbox {
+    display: none;
+}
+
+.page-wrapper {
+    background-color: var(--bg-color);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px 15px;
+    color: var(--text-main);
+    transition: background-color var(--transition-speed) ease, color var(--transition-speed) ease;
+}
+
+/* --- change mode button --- */
+.top-bar {
+    width: 100%;
+    max-width: 700px;
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 20px;
+}
+
+.theme-toggle-label {
+    background-color: var(--card-bg);
+    border: 2px solid var(--border-color);
+    padding: 8px 18px;
+    border-radius: 25px;
+    cursor: pointer;
+    box-shadow: var(--shadow);
+    user-select: none;
+    font-weight: bold;
+    transition: transform 0.2s, background-color var(--transition-speed);
+}
+
+.theme-toggle-label:hover {
+    transform: scale(1.05);
+}
+
+
+.dark-icon { display: none; }
+.theme-toggle-checkbox:checked ~ .page-wrapper .light-icon { display: none; }
+.theme-toggle-checkbox:checked ~ .page-wrapper .dark-icon { display: inline; }
+
+.card-container {
+    background-color: var(--card-bg);
+    width: 100%;
+    max-width: 700px;
+    border-radius: 20px;
+    box-shadow: var(--shadow);
+    padding: 40px;
+    transition: background-color var(--transition-speed), box-shadow var(--transition-speed);
+}
+
+/* --- אזור פרופיל --- */
+.profile-section {
+    text-align: center;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 25px;
+    margin-bottom: 25px;
+}
+
+.profile-img {
+    width: 160px;
+    height: 160px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid var(--primary-color);
+    margin-bottom: 15px;
+    transition: border-color var(--transition-speed);
+}
+
+.name {
+    font-size: 2.2rem;
+    margin-bottom: 8px;
+}
+
+.title {
+    font-size: 1.3rem;
+    color: var(--text-muted);
+    font-weight: 500;
+}
+
+/* --- טיפוגרפיה ותוכן --- */
+h3 {
+    color: var(--primary-color);
+    margin-bottom: 12px;
+    font-size: 1.4rem;
+    border-bottom: 2px solid var(--primary-color);
+    display: inline-block;
+    padding-bottom: 4px;
+}
+
+.about-section, .skills-section, .contact-section {
+    margin-bottom: 30px;
+    line-height: 1.7;
+    font-size: 1.05rem;
+}
+
+.skills-list {
+    list-style-position: inside;
+    padding-right: 5px;
+}
+
+.skills-list li {
+    margin-bottom: 8px;
+}
+
+/* --- links and contact--- */
+.contact-links {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.contact-item {
+    display: block;
+    text-decoration: none;
+    color: var(--text-main);
+    background-color: var(--bg-color);
+    padding: 12px 20px;
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+    transition: all 0.3s ease;
+    text-align: center;
+    font-weight: bold;
+    font-size: 1.1rem;
+}
+
+.contact-item:hover {
+    background-color: var(--primary-color);
+    color: #ffffff;
+    border-color: var(--primary-color);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* --- רספונסיביות (התאמה למסכים גדולים) --- */
+@media (min-width: 600px) {
+    .contact-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+    }
+    
+    .contact-item {
+        flex: 1 1 45%; /* כל כפתור יתפוס קצת פחות מחצי שורה */
+    }
+}
